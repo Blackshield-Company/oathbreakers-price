@@ -1,0 +1,20 @@
+# Changelog
+
+All notable changes to this project are documented here. Versions follow [Semantic Versioning](https://semver.org/).
+
+## [0.1.0] - 2026-10-07
+
+Early beta. First public release. It passes every automated check in the build (Papyrus compile, plugin and dialogue validation, round trip, voice file and SEQ checks, FOMOD schema, 15-plugin series compatibility check) but has not been playtested in-game yet.
+
+### Added
+- "You're a long way from any hall, warden." Talk to Sigrun near the Markarth Stables (level 12+). She gives you Torvald's scored-out oath-scroll.
+- The fence, Gerda Quick-Purse, hides in a dungeon in the Reach, Haafingar or Hjaalmarch. She carries Gerda's Ledger and Torvald's Oath-Sword (an optional objective).
+- Read the ledger: it names Torvald's hideout in Falkreath, Whiterun or the Rift. He waits at the entrance and will talk.
+- Torvald tells his side if you ask. Then choose.
+- Choice: Duel: Oathbreaker's Plate (orcish cuirass, fortify health 40, heavy armor 15), 600 gold.
+- Choice: Yield: Oathkeeper's Aegis (orcish shield, fortify block 20, resist magic 15), 600 gold.
+- Choice: Redeem: His sword reforged as the Oath-Renewed Greatsword (fire + turn undead) and the Oathbreaker's Plate, 600 gold.
+- Soft integration with Steel Oath (runtime lookup, not a master).
+- Soft integration with Contract Hunter (runtime lookup, not a master).
+- Unvoiced dialogue with 26 silent voice files; `SEQ/OathbreakersPrice.seq` for the start-game-enabled dialogue quest.
+- FOMOD installer with optional Papyrus sources.

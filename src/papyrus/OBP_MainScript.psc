@@ -16,6 +16,12 @@ Weapon Property OBP_OathRenewed Auto
 Faction Property OBP_OathbreakerFaction Auto
 Faction Property PlayerFaction Auto
 MiscObject Property Gold001 Auto
+ReferenceAlias Property Fence Auto
+ReferenceAlias Property FenceBoss Auto
+{Optional: the fence's dungeon boss spot.}
+ReferenceAlias Property FenceLedger Auto
+ReferenceAlias Property OathSwordRef Auto
+Form Property OBP_FenceLedgerItem Auto
 
 Bool PendingDismiss = False
 Bool PendingStop = False
@@ -25,7 +31,39 @@ Function Begin(ObjectReference akSigrun)
 		Sigrun.ForceRefTo(akSigrun)
 	EndIf
 	SetStage(10)
+	PlaceAtBoss(Fence, FenceBoss)
+	EnsureItems()
 	SetObjectiveDisplayed(10)
+EndFunction
+
+; 0.1.1: at quest start, and when Gerda loads or dies.
+Function EnsureItems()
+	If GetStage() != 10
+		Return
+	EndIf
+	If Game.GetPlayer().GetItemCount(OBP_FenceLedgerItem) > 0
+		LedgerTaken()
+		Return
+	EndIf
+	EnsureOn(Fence, FenceLedger, OBP_FenceLedgerItem)
+	EnsureOn(Fence, OathSwordRef, OBP_OathSword)
+EndFunction
+
+; 0.1.1: Torvald's sword was picked up. If Gerda is dead and the ledger is gone, hand it over.
+Function SwordPickedUp()
+	EnsureItems()
+	If GetStage() == 10 && Lost(Fence, OBP_FenceLedgerItem)
+		RecoverLedger()
+	EndIf
+EndFunction
+
+; 0.1.1: Sigrun's "Gerda had no ledger" dialogue.
+Function RecoverLedger()
+	If GetStage() != 10
+		Return
+	EndIf
+	GiveToPlayer(FenceLedger, OBP_FenceLedgerItem)
+	LedgerTaken()
 EndFunction
 
 Function LedgerTaken()
@@ -162,3 +200,56 @@ Event OnUpdate()
 		Stop()
 	EndIf
 EndEvent
+
+; ---------------------------------------------------------------------------
+; 0.1.1: alias-created quest items could be missing from the NPC that should carry them
+; (same bug as Champion's Reforge 0.1.0 / The Gray-Mane Debt 0.1.0). These re-add them by script.
+; ---------------------------------------------------------------------------
+
+; Make sure akHolder carries akBase (unless the player already has it).
+Function EnsureOn(ReferenceAlias akHolder, ReferenceAlias akItem, Form akBase)
+	Actor h = akHolder.GetReference() as Actor
+	If !h || !akBase || Game.GetPlayer().GetItemCount(akBase) > 0 || h.GetItemCount(akBase) > 0
+		Return
+	EndIf
+	ObjectReference r = akItem.GetReference()
+	If !r
+		r = h.PlaceAtMe(akBase, 1, True)
+		akItem.ForceRefTo(r)
+	EndIf
+	h.AddItem(r, 1, True)
+	Debug.Trace("OBP_ EnsureOn: re-added " + akBase + " to " + h)
+EndFunction
+
+; Hand akBase straight to the player (unstick path). The item alias's own pickup event then advances the quest.
+Function GiveToPlayer(ReferenceAlias akItem, Form akBase)
+	Actor player = Game.GetPlayer()
+	If !akBase || player.GetItemCount(akBase) > 0
+		Return
+	EndIf
+	ObjectReference r = akItem.GetReference()
+	If !r
+		r = player.PlaceAtMe(akBase, 1, True)
+		akItem.ForceRefTo(r)
+	EndIf
+	player.AddItem(r, 1)
+	Debug.Trace("OBP_ GiveToPlayer: " + akBase)
+EndFunction
+
+; True when the carrier is dead or gone and no longer has the item.
+Bool Function Lost(ReferenceAlias akHolder, Form akBase)
+	Actor h = akHolder.GetReference() as Actor
+	Return !h || (h.IsDead() && h.GetItemCount(akBase) == 0)
+EndFunction
+
+; Move a spawned NPC from the outdoor map marker to the location's boss spot, if it has one.
+Function PlaceAtBoss(ReferenceAlias akActor, ReferenceAlias akSpot)
+	Actor a = akActor.GetReference() as Actor
+	ObjectReference spot = akSpot.GetReference()
+	If a && spot && !a.IsDead()
+		a.MoveTo(spot)
+		Debug.Trace("OBP_ moved " + a + " to the boss spot")
+	ElseIf a
+		Debug.Trace("OBP_ no boss spot for " + a + "; stays at the map marker")
+	EndIf
+EndFunction

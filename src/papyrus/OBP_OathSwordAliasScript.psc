@@ -3,6 +3,8 @@ Scriptname OBP_OathSwordAliasScript extends ReferenceAlias
 
 Event OnContainerChanged(ObjectReference akNewContainer, ObjectReference akOldContainer)
 	If akNewContainer == Game.GetPlayer()
-		(GetOwningQuest() as OBP_MainScript).SwordTaken()
+		OBP_MainScript main = GetOwningQuest() as OBP_MainScript
+		main.SwordTaken()
+		main.SwordPickedUp()
 	EndIf
 EndEvent

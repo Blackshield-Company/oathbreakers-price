@@ -14,7 +14,7 @@ internal static class ModInfo
     public const string Description = "Oathbreaker's Price: a manhunt for an oathbreaker knight with four endings and legendary gear.";
 
     const int APlayer = 0, ASigrun = 1, AScroll = 2, AAccLoc = 3, AAccMarker = 4, AFence = 5, AFenceLedger = 6, AOathSword = 7,
-        AHideLoc = 8, AHideMarker = 9, ATorvald = 10;
+        AHideLoc = 8, AHideMarker = 9, ATorvald = 10, AFenceBoss = 11;
     const int IPlayer = 0, IMarker = 1, ISigrun = 2;
 
     public static void Build(Kit k)
@@ -98,13 +98,24 @@ internal static class ModInfo
         main.Aliases.Add(Dungeon(AHideLoc, "HideLoc", hideHolds.FormKey, LocTypeDungeon));
         main.Aliases.Add(MarkerOf(AHideMarker, "HideMarker", AHideLoc));
         main.Aliases.Add(Created(ATorvald, "Torvald", torvald.FormKey, AHideMarker, false, Level.Hard, QuestAlias.Flag.InitiallyDisabled | QuestAlias.Flag.StoresText));
+        // 0.1.1: the fence's dungeon boss spot (optional); the script moves Gerda there.
+        main.Aliases.Add(new QuestAlias
+        {
+            ID = AFenceBoss, Type = QuestAlias.TypeEnum.Reference, Name = "FenceBoss",
+            Flags = QuestAlias.Flag.Optional | QuestAlias.Flag.AllowDead | QuestAlias.Flag.AllowDisabled,
+            Location = new LocationAliasReference { AliasID = AAccLoc, RefType = N<ILocationReferenceTypeGetter>(RefTypeBoss) },
+        });
         main.NextAliasID = (uint)main.Aliases.Count;
         main.VirtualMachineAdapter = Vmad.QuestAdapter(Vmad.Script("OBP_MainScript",
+                Vmad.Alias("Fence", qMain, AFence), Vmad.Alias("FenceBoss", qMain, AFenceBoss),
+                Vmad.Alias("FenceLedger", qMain, AFenceLedger), Vmad.Alias("OathSwordRef", qMain, AOathSword),
+                Vmad.Obj("OBP_FenceLedgerItem", fenceLedger.FormKey),
                 Vmad.Alias("Sigrun", qMain, ASigrun), Vmad.Alias("Torvald", qMain, ATorvald),
                 Vmad.Obj("OBP_State", gState), Vmad.Obj("OBP_RewardGold", gReward), Vmad.Obj("OBP_HunterBonus", gBounty), Vmad.Obj("OBP_SeriesCHT", gCHT),
                 Vmad.Obj("OBP_OathbreakerPlate", plate.FormKey), Vmad.Obj("OBP_OathkeeperAegis", aegis.FormKey),
                 Vmad.Obj("OBP_OathSword", oathSword.FormKey), Vmad.Obj("OBP_OathRenewed", renewed.FormKey),
                 Vmad.Obj("OBP_OathbreakerFaction", forsworn.FormKey), Vmad.Obj("PlayerFaction", PlayerFaction), Vmad.Obj("Gold001", Gold001)))
+            .WithAliasScripts(qMain, AFence, Vmad.Script("OBP_FenceAliasScript"))
             .WithAliasScripts(qMain, AFenceLedger, Vmad.Script("OBP_FenceLedgerAliasScript"))
             .WithAliasScripts(qMain, AOathSword, Vmad.Script("OBP_OathSwordAliasScript"))
             .WithAliasScripts(qMain, ATorvald, Vmad.Script("OBP_TorvaldAliasScript"));
@@ -131,6 +142,9 @@ internal static class ModInfo
 
         var tStatus = k.TopTopic("OBP_S_Status", qMain, T.TopicStatus, sSigrun);
         k.Info(tStatus, "OBP_S_Status10", T.Status10, new[] { isSigrun, St(CompareOperator.LessThan, 20) });
+        // 0.1.1: unstick for saves where Gerda never had her ledger (works on 0.1.0 saves).
+        var tRecover = k.TopTopic("OBP_S_Recover", qMain, T.TopicRecover, sSigrun);
+        k.Info(tRecover, "OBP_S_RecoverInfo", T.Recover, new[] { isSigrun, St(CompareOperator.EqualTo, 10), PlayerHas(oathSword.FormKey), PlayerLacks(fenceLedger.FormKey) }, goodbye: true, fragment: "OBP_TIF_Recover");
         k.Info(tStatus, "OBP_S_Status20", T.Status20, new[] { isSigrun, St(CompareOperator.EqualTo, 20) });
 
         var tReport = k.TopTopic("OBP_S_Report", qMain, T.TopicReport, sSigrun);
@@ -190,6 +204,8 @@ internal static class T
     public static readonly string[] Decline = { "Then don't make one you can't keep." };
 
     public const string TopicStatus = "About Torvald...";
+    public const string TopicRecover = "Gerda had his sword, but no ledger.";
+    public static readonly string[] Recover = { "No ledger? She'd never part with it. Show me the sword. There, a slip of her ledger rolled up in the grip. Read it. It'll say where he went." };
     public static readonly string[] Status10 = { "Gerda will have his sword, and she'll know where he went. Make her talk, or read what she carries." };
     public static readonly string[] Status20 = { "He's at <Alias=HideLoc>. Kill him, bring him back, or... if there's a better answer, I'll hear it." };
 

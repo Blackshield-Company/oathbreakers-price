@@ -4,7 +4,7 @@ Game: Skyrim Special Edition
 
 Mod name: Oathbreaker's Price
 
-Version: 0.1.1 (early beta)
+Version: 0.1.2 (early beta)
 
 Category: Quests and Adventures
 
@@ -12,9 +12,9 @@ Short summary (238 chars):
 Hunt an oathbreaker knight for the Oath-Wardens: follow a fence to his hideout, then duel him, take his surrender, or make him swear again on his recovered sword. Legendary plate, shield and greatsword. Unvoiced. ESL, no SKSE. Early beta.
 
 Main file:
-- File: OathbreakersPrice-0.1.1.zip (FOMOD installer)
+- File: OathbreakersPrice-0.1.2.zip (FOMOD installer)
 - File name: Oathbreaker's Price
-- File version: 0.1.1
+- File version: 0.1.2
 - File category: Main Files
 - File description: Early beta. FOMOD installer with OathbreakersPrice.esp (ESL-flagged), compiled scripts, SEQ file, silent voice files for the unvoiced dialogue, and optional Papyrus sources. Requires only Skyrim Special Edition / Anniversary Edition (1.5.97 or 1.6.x).
 

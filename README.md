@@ -4,7 +4,7 @@
 
 An oathbreaker manhunt for the oath side of the series. **Warden Sigrun Oath-Keeper** waits by the **Markarth Stables**. A knight named **Torvald** swore to guard nine pilgrims, ran when the Forsworn came, sold his oath-sword to a fence and vanished.
 
-**Status: v0.1.1, early beta.** It passes every automated check in the build (Papyrus compile, plugin and dialogue validation, byte-exact round trip, voice file and SEQ checks, FOMOD schema, the series compatibility check) but has not been playtested in-game yet. Expect rough edges and please report what you find. See [docs/TESTING.md](docs/TESTING.md).
+**Status: v0.1.2, early beta.** It passes every automated check in the build (Papyrus compile, plugin and dialogue validation, byte-exact round trip, voice file and SEQ checks, FOMOD schema, the series compatibility check) but has not been playtested in-game yet. Expect rough edges and please report what you find. See [docs/TESTING.md](docs/TESTING.md).
 
 - Game: Skyrim Special Edition / Anniversary Edition 1.6.x (also fine on 1.5.97). Works on Windows and on Linux through Proton.
 - Requirements: none beyond the base game. No SKSE, no SkyUI, no DLC, no Creation Club content required.
@@ -46,7 +46,7 @@ All 26 new lines are unvoiced, shown as subtitles, and each one ships with a sil
 
 ## Install
 
-Grab `OathbreakersPrice-0.1.1.zip` from [Releases](https://github.com/synthalorian/oathbreakers-price/releases) (FOMOD installer).
+Grab `OathbreakersPrice-0.1.2.zip` from [Releases](https://github.com/synthalorian/oathbreakers-price/releases) (FOMOD installer).
 
 - **Mod Organizer 2** or **Vortex**: install the zip and enable `OathbreakersPrice.esp`.
 - **Manual (Linux/Proton)**: copy everything inside `00 Core/` (plugin, `Scripts/`, `SEQ/`, `Sound/`) into `.../steamapps/common/Skyrim Special Edition/Data/` and add `*OathbreakersPrice.esp` to `Plugins.txt` in the Proton prefix (`.../compatdata/489830/pfx/drive_c/users/steamuser/AppData/Local/Skyrim Special Edition/`).

@@ -198,7 +198,7 @@ internal static class T
     public const string TopicAccept = "I'll hunt him down.";
     public static readonly string[] Accept =
     {
-        "Take his oath-scroll; he left it behind when he ran. The fence is Gerda Quick-Purse. She went to ground at <Alias=FenceLoc>.",
+        "Take his oath-scroll; he left it behind when he ran. The fence is Gerda Quick-Purse. She went to ground somewhere I've marked on your map.",
     };
     public const string TopicDecline = "Not my oath, not my problem.";
     public static readonly string[] Decline = { "Then don't make one you can't keep." };

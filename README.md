@@ -79,6 +79,13 @@ set OBP_HunterBonus to 300
 
 Current build: 58 new records (FormIDs 800-839): Armor 2, Book 2, DialogBranch 4, DialogResponses 18, DialogTopic 11, Faction 2, FormList 2, GlobalFloat 6, Message 1, Npc 3, ObjectEffect 3, Quest 2, Weapon 2; 11 Papyrus scripts; 26 silent voice files; 1 SEQ entry.
 
+## Support
+
+Donations are optional. Nothing in the mod is gated on them.
+
+- GitHub Sponsors: https://github.com/sponsors/synthalorian
+- Ko-fi: https://ko-fi.com/synthalorian
+
 ## Credits
 
 - Built with [Mutagen](https://github.com/Mutagen-Modding/Mutagen) and [russo-2025/papyrus-compiler](https://github.com/russo-2025/papyrus-compiler).

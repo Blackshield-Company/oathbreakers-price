@@ -93,7 +93,7 @@ internal static class ModInfo
         main.Aliases.Add(Dungeon(AAccLoc, "FenceLoc", accHolds.FormKey, LocTypeDungeon));
         main.Aliases.Add(MarkerOf(AAccMarker, "FenceMarker", AAccLoc));
         main.Aliases.Add(Created(AFence, "Fence", fence.FormKey, AAccMarker, false, Level.Hard, QuestAlias.Flag.StoresText));
-        main.Aliases.Add(Created(AFenceLedger, "FenceLedger", fenceLedger.FormKey, AFence, true, Level.Easy, QuestAlias.Flag.QuestObject));
+        main.Aliases.Add(Created(AFenceLedger, "FenceLedger", fenceLedger.FormKey, AFence, true, Level.Easy, QuestAlias.Flag.QuestObject | QuestAlias.Flag.StoresText | QuestAlias.Flag.UsesStoredText));
         main.Aliases.Add(Created(AOathSword, "OathSword", oathSword.FormKey, AFence, true, Level.Easy, 0));
         main.Aliases.Add(Dungeon(AHideLoc, "HideLoc", hideHolds.FormKey, LocTypeDungeon));
         main.Aliases.Add(MarkerOf(AHideMarker, "HideMarker", AHideLoc));
@@ -207,7 +207,7 @@ internal static class T
     public const string TopicRecover = "Gerda had his sword, but no ledger.";
     public static readonly string[] Recover = { "No ledger? She'd never part with it. Show me the sword. There, a slip of her ledger rolled up in the grip. Read it. It'll say where he went." };
     public static readonly string[] Status10 = { "Gerda will have his sword, and she'll know where he went. Make her talk, or read what she carries." };
-    public static readonly string[] Status20 = { "He's at <Alias=HideLoc>. Kill him, bring him back, or... if there's a better answer, I'll hear it." };
+    public static readonly string[] Status20 = { "His hideout is marked on your map. Kill him, bring him back, or... if there's a better answer, I'll hear it." };
 
     public const string TopicReport = "Torvald's account is settled.";
     public static readonly string[] ReportDead =

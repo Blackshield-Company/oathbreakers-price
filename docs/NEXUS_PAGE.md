@@ -1,24 +1,24 @@
 # Nexus Mods page: Oathbreaker's Price
 
-Early beta: v0.1.2 passed every automated build check but hasn't been playtested in-game. Exact upload-form values are in [NEXUS_FIELDS.md](NEXUS_FIELDS.md).
+Early beta: v0.1.3 passed every automated build check but hasn't been playtested in-game. Exact upload-form values are in [NEXUS_FIELDS.md](NEXUS_FIELDS.md).
 
 ## Page settings
 
 - **Game:** Skyrim Special Edition
 - **Mod name:** Oathbreaker's Price
-- **Version:** 0.1.2 (early beta)
+- **Version:** 0.1.3 (early beta)
 - **Category:** Quests and Adventures
 - **Suggested tags:** Quests, Lore-Friendly, Dialogue, Choices and Consequences, Armour, Weapons, ESL, No SKSE, Scripted
 - **Requirements:** none.
 - **Permissions (suggested):** source on GitHub under MIT; allow modification with credit, no re-uploads of the archive.
-- **File to upload:** `OathbreakersPrice-0.1.2.zip` (FOMOD), main file, named "Oathbreaker's Price".
+- **File to upload:** `OathbreakersPrice-0.1.3.zip` (FOMOD), main file, named "Oathbreaker's Price".
 
 ## Description (paste into the BBCode editor)
 
 Same text as `nexus/obp-description.txt` in the workspace:
 
 ```bbcode
-[center][color=#e06c3c][b]EARLY RELEASE (v0.1.2)[/b]: new mod, not yet widely playtested. Please report bugs in the Bugs tab with your Papyrus log lines (grep OBP_). Source: [url=https://github.com/synthalorian/oathbreakers-price]GitHub[/url][/color][/center]
+[center][color=#e06c3c][b]EARLY RELEASE (v0.1.3)[/b]: new mod, not yet widely playtested. Please report bugs in the Bugs tab with your Papyrus log lines (grep OBP_). Source: [url=https://github.com/synthalorian/oathbreakers-price]GitHub[/url][/color][/center]
 
 [center][size=6][b]OATHBREAKER'S PRICE[/b][/size]
 [size=3][i]Nine pilgrims died because one knight ran. The Oath-Wardens want him found.[/i][/size][/center]
@@ -26,7 +26,7 @@ Same text as `nexus/obp-description.txt` in the workspace:
 [line]
 
 [size=4][b]Summary[/b][/size]
-[b]Status: Early beta (v0.1.2).[/b] Every automated build check passes, but it hasn't had wide in-game playtesting yet. It's playable now. Bug reports help shape 0.1.x.
+[b]Status: Early beta (v0.1.3).[/b] Every automated build check passes, but it hasn't had wide in-game playtesting yet. It's playable now. Bug reports help shape 0.1.x.
 An oathbreaker manhunt for the oath side of the series. [b]Warden Sigrun Oath-Keeper[/b] waits by the [b]Markarth Stables[/b]. A knight named [b]Torvald[/b] swore to guard nine pilgrims, ran when the Forsworn came, sold his oath-sword to a fence and vanished.
 
 [size=4][b]The quest[/b][/size]

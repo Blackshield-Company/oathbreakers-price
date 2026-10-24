@@ -35,4 +35,4 @@ Permissions (suggestion; code is MIT on GitHub):
 Tags (pick the closest matches in the tag picker):
 Quests, Lore-Friendly, Dialogue, Choices and Consequences, Armour, Weapons, ESL, No SKSE, Scripted
 
-Source: https://github.com/synthalorian/oathbreakers-price
+Source: https://github.com/Blackshield-Company/oathbreakers-price

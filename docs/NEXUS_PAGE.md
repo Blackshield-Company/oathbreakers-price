@@ -18,7 +18,7 @@ Early beta: v0.1.3 passed every automated build check but hasn't been playtested
 Same text as `nexus/obp-description.txt` in the workspace:
 
 ```bbcode
-[center][color=#e06c3c][b]EARLY RELEASE (v0.1.3)[/b]: new mod, not yet widely playtested. Please report bugs in the Bugs tab with your Papyrus log lines (grep OBP_). Source: [url=https://github.com/synthalorian/oathbreakers-price]GitHub[/url][/color][/center]
+[center][color=#e06c3c][b]EARLY RELEASE (v0.1.3)[/b]: new mod, not yet widely playtested. Please report bugs in the Bugs tab with your Papyrus log lines (grep OBP_). Source: [url=https://github.com/Blackshield-Company/oathbreakers-price]GitHub[/url][/color][/center]
 
 [center][size=6][b]OATHBREAKER'S PRICE[/b][/size]
 [size=3][i]Nine pilgrims died because one knight ran. The Oath-Wardens want him found.[/i][/size][/center]
@@ -93,7 +93,7 @@ Install with [b]Mod Organizer 2[/b] or [b]Vortex[/b] (FOMOD installer) and enabl
 As with any scripted mod, finish the quest before removing it.
 
 [size=4][b]Source[/b][/size]
-Open source (MIT): [url=https://github.com/synthalorian/oathbreakers-price]github.com/synthalorian/oathbreakers-price[/url]
+Open source (MIT): [url=https://github.com/Blackshield-Company/oathbreakers-price]github.com/Blackshield-Company/oathbreakers-price[/url]
 
 [size=4][b]Credits[/b][/size]
 [list]
